@@ -53,16 +53,16 @@ def get_hyperparams():
     transform_input/output: None or 'arcsinh' (log is INVALID: inputs/multipoles can be negative)
     """
     return dict(
-        learning_rate=3e-4,
-        n_hidden=[512, 512, 512, 512, 512],
+        learning_rate=1e-3,
+        n_hidden=[512, 512, 512, 512],
         dropout_rate=0.0,
         weight_decay=0,
         batch_size=128,
         val_fraction=0.1,
-        act_fn='learned_sigmoid',
-        loss='weighted_mae',
-        transform_input=None,
-        transform_output=None,
+        act_fn='learned_sigmoid',        # or: SiLU, GELU, ELU, Mish, ReLU, etc.
+        loss='weighted_mae',             # or: weighted_mse, GaussianNLoglike, mse, mae
+        transform_input=None,            # or: 'arcsinh' (log is invalid: inputs can be negative)
+        transform_output=None,           # or: 'arcsinh' (log is INVALID: multipoles can be negative at large k)
         scheduler_patience=10,
         scheduler_factor=0.5,
         scheduler_threshold=1e-6,
