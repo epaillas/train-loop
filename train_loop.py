@@ -59,10 +59,10 @@ def get_hyperparams():
         weight_decay=0,
         batch_size=128,
         val_fraction=0.1,
-        act_fn='learned_sigmoid',        # or: SiLU, GELU, ELU, Mish, ReLU, etc.
-        loss='weighted_mae',             # or: weighted_mse, GaussianNLoglike, mse, mae
+        act_fn='learned_sigmoid',        # proven best activation
+        loss='weighted_mse',             # L2 loss: penalizes large errors more, may find sharper minimum
         transform_input=None,            # or: 'arcsinh'
-        transform_output='arcsinh',      # arcsinh compresses dynamic range, handles negatives safely
+        transform_output='arcsinh',      # proven: key improvement
         scheduler_patience=10,
         scheduler_factor=0.5,
         scheduler_threshold=1e-6,
