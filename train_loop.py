@@ -61,8 +61,8 @@ def get_hyperparams():
         val_fraction=0.1,
         act_fn='learned_sigmoid',        # or: SiLU, GELU, ELU, Mish, ReLU, etc.
         loss='weighted_mae',             # or: weighted_mse, GaussianNLoglike, mse, mae
-        transform_input=None,            # or: 'arcsinh' (log is invalid: inputs can be negative)
-        transform_output=None,           # or: 'arcsinh' (log is INVALID: multipoles can be negative at large k)
+        transform_input=None,            # or: 'arcsinh'
+        transform_output='arcsinh',      # arcsinh compresses dynamic range, handles negatives safely
         scheduler_patience=10,
         scheduler_factor=0.5,
         scheduler_threshold=1e-6,
